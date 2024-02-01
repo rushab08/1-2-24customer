@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Form Submission Example</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2>Form Submission Example</h2>
+
+  <form id="myForm">
+    <div class="form-group">
+      <label for="nameInput">Name:</label>
+      <input type="text" class="form-control" id="nameInput" required>
+    </div>
+    <div class="form-group">
+      <label for="emailInput">Email:</label>
+      <input type="email" class="form-control" id="emailInput" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add to List</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevents the default form submission behavior
+
+    // Get the input values
+    var name = document.getElementById('nameInput').value;
+    var email = document.getElementById('emailInput').value;
+
+    // Redirect to the new page with parameters
+    window.location.href = 'list.html?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
+  });
+</script>
+
+</body>
+</html>
