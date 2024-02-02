@@ -56,7 +56,21 @@ items.forEach(function(item) {
   var emailElement = document.createElement('div');
   emailElement.textContent = 'Email: ' + item.email;
   listItemElement.appendChild(emailElement);
+  // Create buttons and append them to the list item
+  var buttonGroup = document.createElement('div');
+  buttonGroup.className = 'btn-group';
+  
+  var editButton = document.createElement('button');
+  editButton.className = 'btn btn-primary';
+  editButton.textContent = 'responded quotes';
+  buttonGroup.appendChild(editButton);
 
+  var deleteButton = document.createElement('button');
+  deleteButton.className = 'btn btn-primary ml-2'; // Added margin to the right
+  deleteButton.textContent = 'view details';
+  buttonGroup.appendChild(deleteButton);
+
+  listItem.appendChild(buttonGroup);
   // Append the new item to the list
   document.getElementById('itemList').appendChild(listItemElement);
 });
