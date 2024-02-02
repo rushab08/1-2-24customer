@@ -25,41 +25,42 @@
 
 <script>
   // Retrieve parameters from the URL
-  var urlParams = new URLSearchParams(window.location.search);
-  var name = urlParams.get('name');
-  var email = urlParams.get('email');
+var urlParams = new URLSearchParams(window.location.search);
+var name = urlParams.get('name');
+var email = urlParams.get('email');
 
-  // Create a new list item
-  var listItem = document.createElement('li');
-  listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+// Create a new list item
+var listItem = {
+  name: name,
+  email: email
+};
 
-  // Create and append the name and email elements
+// Get the existing items from localStorage
+var items = JSON.parse(localStorage.getItem('items')) || [];
+
+// Add the new item to the array
+items.push(listItem);
+
+// Save the updated items back to localStorage
+localStorage.setItem('items', JSON.stringify(items));
+
+// Now, create and append list items for each item in the array
+items.forEach(function(item) {
+  var listItemElement = document.createElement('li');
+  listItemElement.className = 'list-group-item d-flex justify-content-between align-items-center';
+
   var nameElement = document.createElement('div');
-  nameElement.textContent = 'Name: ' + name;
-  listItem.appendChild(nameElement);
+  nameElement.textContent = 'Name: ' + item.name;
+  listItemElement.appendChild(nameElement);
 
   var emailElement = document.createElement('div');
-  emailElement.textContent = 'Email: ' + email;
-  listItem.appendChild(emailElement);
-
-  // Create buttons and append them to the list item
-  var buttonGroup = document.createElement('div');
-  buttonGroup.className = 'btn-group';
-  
-  var editButton = document.createElement('button');
-  editButton.className = 'btn btn-primary';
-  editButton.textContent = 'responded quotes';
-  buttonGroup.appendChild(editButton);
-
-  var deleteButton = document.createElement('button');
-  deleteButton.className = 'btn btn-danger ml-2'; // Added margin to the right
-  deleteButton.textContent = 'view details';
-  buttonGroup.appendChild(deleteButton);
-
-  listItem.appendChild(buttonGroup);
+  emailElement.textContent = 'Email: ' + item.email;
+  listItemElement.appendChild(emailElement);
 
   // Append the new item to the list
-  document.getElementById('itemList').appendChild(listItem);
+  document.getElementById('itemList').appendChild(listItemElement);
+});
+
 </script>
 
 </body>
