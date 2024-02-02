@@ -53,15 +53,13 @@ localStorage.setItem('items', JSON.stringify(items));
     nameElement.textContent = 'Name: ' + item.name;
     listItemElement.appendChild(nameElement);
 
-    var emailElement = document.createElement('div');
-    emailElement.textContent = 'Email: ' + item.email;
-    listItemElement.appendChild(emailElement);
+  var emailElement = document.createElement('div');
+  emailElement.textContent = 'Email: ' + item.email;
+  listItemElement.appendChild(emailElement);
 
-    
-
-    // Append the new item to the list
-    document.getElementById('itemList').appendChild(listItemElement);
-  });
+  // Append the new item to the list
+  document.getElementById('itemList').appendChild(listItemElement);
+});
 
 </script>
 
