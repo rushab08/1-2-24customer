@@ -25,58 +25,79 @@
 
 <script>
   // Retrieve parameters from the URL
-var urlParams = new URLSearchParams(window.location.search);
-var name = urlParams.get('name');
-var email = urlParams.get('email');
+  var urlParams = new URLSearchParams(window.location.search);
+  var name = urlParams.get('name');
+  var email = urlParams.get('email');
 
-// Create a new list item
-var listItem = {
-  name: name,
-  email: email
-};
+  // Create a new list item
+  var listItem = {
+    name: name,
+    email: email
+  };
 
-// Get the existing items from localStorage
-var items = JSON.parse(localStorage.getItem('items')) || [];
+  // Get the existing items from localStorage
+  var items = JSON.parse(localStorage.getItem('items')) || [];
 
-// Add the new item to the array
-items.push(listItem);
+  // Add the new item to the array
+  items.push(listItem);
 
-// Save the updated items back to localStorage
-localStorage.setItem('items', JSON.stringify(items));
+  // Save the updated items back to localStorage
+  localStorage.setItem('items', JSON.stringify(items));
 
   // Now, create and append list items for each item in the array
-  items.forEach(function (item) {
+  items.forEach(function (item, index) {
     var listItemElement = document.createElement('li');
-    listItemElement.className = 'list-group-item d-flex flex-column align-items-start'; // Use flex-column to stack items vertically
+    listItemElement.className = 'list-group-item d-flex justify-content-between align-items-start'; // Adjusted classes
+
+    var contentContainer = document.createElement('div');
+    contentContainer.className = 'd-flex flex-column';
 
     var nameElement = document.createElement('div');
     nameElement.textContent = 'Name: ' + item.name;
-    listItemElement.appendChild(nameElement);
+    contentContainer.appendChild(nameElement);
 
-  var emailElement = document.createElement('div');
-  emailElement.textContent = 'Email: ' + item.email;
-  listItemElement.appendChild(emailElement);
-  // Create buttons and append them to the list item
-  var buttonGroup = document.createElement('div');
-  buttonGroup.className = 'btn-group';
-  
-  var editButton = document.createElement('button');
-  editButton.className = 'btn btn-primary';
-  editButton.textContent = 'responded quotes';
-  buttonGroup.appendChild(editButton);
+    var emailElement = document.createElement('div');
+    emailElement.textContent = 'Email: ' + item.email;
+    contentContainer.appendChild(emailElement);
 
-  var deleteButton = document.createElement('button');
-  deleteButton.className = 'btn btn-primary ml-2'; // Added margin to the right
-  deleteButton.textContent = 'view details';
-  buttonGroup.appendChild(deleteButton);
+    listItemElement.appendChild(contentContainer);
 
-  listItem.appendChild(buttonGroup);
-  // Append the new item to the list newwww
-  document.getElementById('itemList').appendChild(listItemElement);
-});
+    // Create buttons and append them to the list item
+    var buttonGroup = document.createElement('div');
+    buttonGroup.className = 'btn-group';
+
+    var respondedQuotesButton = document.createElement('button');
+    respondedQuotesButton.className = 'btn btn-primary';
+    respondedQuotesButton.textContent = 'Responded Quotes';
+    buttonGroup.appendChild(respondedQuotesButton);
+
+    var viewDetailsButton = document.createElement('button');
+    viewDetailsButton.className = 'btn btn-primary ml-2'; // Added margin to the right
+    viewDetailsButton.textContent = 'View Details';
+    buttonGroup.appendChild(viewDetailsButton);
+
+    // Delete button
+    var deleteButton = document.createElement('button');
+    deleteButton.className = 'btn btn-danger ml-2';
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function () {
+      // Remove the item from the array and update local storage
+      items.splice(index, 1);
+      localStorage.setItem('items', JSON.stringify(items));
+
+      // Remove the list item from the DOM
+      listItemElement.remove();
+    });
+
+    buttonGroup.appendChild(deleteButton);
+
+    listItemElement.appendChild(buttonGroup);
+
+    // Append the new item to the list
+    document.getElementById('itemList').appendChild(listItemElement);
+  });
 
 </script>
 
 </body>
 </html>
-
