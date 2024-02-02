@@ -44,14 +44,14 @@ items.push(listItem);
 // Save the updated items back to localStorage
 localStorage.setItem('items', JSON.stringify(items));
 
-// Now, create and append list items for each item in the array
-items.forEach(function(item) {
-  var listItemElement = document.createElement('li');
-  listItemElement.className = 'list-group-item d-flex justify-content-between align-items-center';
+  // Now, create and append list items for each item in the array
+  items.forEach(function (item) {
+    var listItemElement = document.createElement('li');
+    listItemElement.className = 'list-group-item d-flex flex-column align-items-start'; // Use flex-column to stack items vertically
 
-  var nameElement = document.createElement('div');
-  nameElement.textContent = 'Name: ' + item.name;
-  listItemElement.appendChild(nameElement);
+    var nameElement = document.createElement('div');
+    nameElement.textContent = 'Name: ' + item.name;
+    listItemElement.appendChild(nameElement);
 
   var emailElement = document.createElement('div');
   emailElement.textContent = 'Email: ' + item.email;
@@ -71,7 +71,7 @@ items.forEach(function(item) {
   buttonGroup.appendChild(deleteButton);
 
   listItem.appendChild(buttonGroup);
-  // Append the new item to the list button is there
+  // Append the new item to the list
   document.getElementById('itemList').appendChild(listItemElement);
 });
 
