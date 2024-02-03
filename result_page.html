@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .list-group {
+            width: 100%;
+        }
+
+        .list-group-item {
+            border: none;
+            background-color: #ffffff;
+        }
+
+        #formDataResult {
+            font-size: 18px;
+            color: #333333;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="carousel_se_03 d-flex justify-content-center" style="background: rgba(244, 148, 49);">
+        <div class="container-fluid pt-5 pb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 px-4 pt-0 mt-5 ">
+                        <div class="owl-carousel carousel_se_03_carousel owl-theme offers-items">
+                            <!-- Your carousel content here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+    <div class="container mt-5">
+        <ul class="list-group" id="quoteList">
+            <!-- Existing list item for form data result -->
+            <li class="list-group-item">
+                <span id="formDataResult"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="btn-container">
+        <a href="qts.html" class="btn btn-primary" onclick="appendNewQuote()">Post a Quote</a>
+    </div>
+
+    <script>
+        // Function to append a new quote
+        function appendNewQuote() {
+            // Your existing JavaScript code for appending new quotes here
+        }
+    </script>
+
+</body>
+</html>

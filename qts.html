@@ -171,8 +171,8 @@
     document.getElementById('quote_form').addEventListener('submit', function(event) {
     event.preventDefault();
 
-            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
+    //         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    //         successModal.show();
 
     // Retrieve form data
     var category = document.getElementById('quote_category').value;
@@ -182,7 +182,7 @@
     var date = document.getElementById('quote_date').value;
 
     // Construct URL with form data as parameters
-    var url = 'result_page.php' +
+    var url = 'result_page.html' +
               '?category=' + encodeURIComponent(category) +
               '&subcategory=' + encodeURIComponent(subcategory) +
               '&quantity=' + encodeURIComponent(quantity) +
