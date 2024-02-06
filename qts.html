@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .step {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 60px;
+            padding-top: 15px;
+        }
+        .step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: white;
+            color: lightblue;
+            border: 2px solid lightblue;
+            border-radius: 50%;
+            left: 0;
+            text-align: center;
+            line-height: 40px;
+            top: 5px;
+        }
+        .step::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: calc(100% + 30px);
+            background: lightblue;
+            left: 20px;
+            top: 45px;
+        }
+        .step:last-child::after {
+            display: none;
+        }
+        ol {
+            list-style-type: none;
+            counter-reset: step-counter;
+        }
+        #quote_form {
+            border: 2px solid orange; 
+            padding: 20px; 
+            border-radius: 10px;
+        }
+        .validation {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- orange line -->
+<section class="carousel_se_03 d-flex justify-content-center" style="background: rgba(244, 148, 49);">
+    <div class="container-fluid pt-5 pb-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 px-4 pt-0 mt-5 ">
+                    <div class="owl-carousel carousel_se_03_carousel owl-theme offers-items">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br>
+
+
+
+<!-- instructions and 444 form --> 
+<div class="container my-5">
+    <div class="row">
+        <div class="spacing"></div>
+        <div class="col-md-6">
+            <h2>One Request, Multiple Quotes</h2>
+            <h4>How it works?</h4>
+            <ol>
+                <li class="step">Fill out the form, tell us what you need.</li>
+                <li class="step">Request will be send to verified vendors.</li>
+                <li class="step">Get the best quotes from genuine vendors.</li>
+                <li class="step">Seal the Deal.</li>
+            </ol>
+        </div>
+        <div class="col-md-6">
+            <h2>Post Buy Requirement</h2>
+            <!-- <h4>Get the Best Deals and Exclusive Offers with TradeIndia</h4> -->
+            <form id="quote_form">
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" id="quote_category">
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="">from db</option>
+                    </select>
+                    <span class="validation" id="categoryValidation">Please select a category.</span>
+                </div>
+                <div class="form-group">
+                    <label for="subcategory">Sub Category</label>
+                    <select class="form-control" id="quote_subcategory">
+                        <option value="" disabled selected>Select sub-category</option>
+                    </select>
+                    <span class="validation" id="subcategoyValidation">Please select a sub-category.</span>
+                </div>
+                <div class="form-group d-none">
+                <label for="quantity">Quantity</label>
+                <input type="number" class="form-control" id="quote_quantity">
+                <span class="validation" id="quantityValidation">Please enter a quantity.</span>
+            </div>
+            <div class="form-group d-none">
+                <label for="budget">Your Budget</label>
+                <input type="number" class="form-control" id="quote_budget">
+                <span class="validation" id="budgetValidation">Please enter your budget.</span>
+            </div>
+            <div class="form-group d-none">
+                <label for="date">Estimated Date</label>
+                <input type="date" class="form-control" id="quote_date">
+                <span class="validation" id="dateValidation">Please select an estimated date.</span>
+            </div>
+                <button type="submit" class="btn btn-primary d-none">Submit</button>
+                <button type="button" id="tey" class="btn btn-primary">Continue</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- modal successful -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Success</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        The request was sent successfully.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+    // continue button
+    document.getElementById('tey').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        this.style.display = 'none';
+        var hiddenElements = document.querySelectorAll('#quote_form .d-none');
+        hiddenElements.forEach(function(element) {
+            element.classList.remove('d-none');
+        });
+
+    });
+
+    // // submit button
+    // document.getElementById('quote_form').addEventListener('submit', function(event) {
+    //     event.preventDefault();
+
+    //     var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    //     successModal.show();
+    // });
+    document.getElementById('quote_form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    //         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+    //         successModal.show();
+
+    // Retrieve form data
+    var category = document.getElementById('quote_category').value;
+    var subcategory = document.getElementById('quote_subcategory').value;
+    var quantity = document.getElementById('quote_quantity').value;
+    var budget = document.getElementById('quote_budget').value;
+    var date = document.getElementById('quote_date').value;
+
+    // Construct URL with form data as parameters
+    var url = 'result_page.html' +
+              '?category=' + encodeURIComponent(category) +
+              '&subcategory=' + encodeURIComponent(subcategory) +
+              '&quantity=' + encodeURIComponent(quantity) +
+              '&budget=' + encodeURIComponent(budget) +
+              '&date=' + encodeURIComponent(date);
+
+    // Redirect to the new page
+    window.location.href = url;
+});
+
+</script>
+</body>
+</html>

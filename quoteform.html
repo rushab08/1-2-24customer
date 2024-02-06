@@ -32,11 +32,11 @@
   document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevents the default form submission behavior
 
-    // Get the input values jeslif
+    // Get the input values 
     var name = document.getElementById('nameInput').value;
     var email = document.getElementById('emailInput').value;
 
-    // Redirect to the new page with parameters
+    // Redirect to the new page with logicccc
     window.location.href = 'list.html?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email);
   });
 </script>

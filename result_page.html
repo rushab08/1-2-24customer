@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>List Page</title>
+  <style>
+    body {
+      background-color: #f8f9fa; /* Light gray background */
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    #itemList {
+      list-style: none;
+      padding: 0;
+    }
+
+    .list-group-item {
+      background-color: #ffffff; /* White background */
+      border: 1px solid #dee2e6; /* Light gray border */
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .list-group-item:hover {
+      background-color: #e9ecef; /* Light gray background on hover */
+    }
+
+    .list-group-item .d-flex {
+      justify-content: space-between;
+    }
+
+    .list-group-item .btn-group {
+      display: flex;
+    }
+
+    .btn-primary {
+      background-color: #007bff; /* Blue button */
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .btn-danger {
+      background-color: #dc3545; /* Red button */
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background-color: #bd2130; /* Darker red on hover */
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 320px) {
+      .carousel_se_03_carousel {
+        width: 100%;
+      }
+
+      .list-group-item {
+        padding: 5px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+    <section class="carousel_se_03 d-flex justify-content-center" style="background: rgba(244, 148, 49);">
+        <div class="container-fluid pt-5 pb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 px-4 pt-0 mt-5 ">
+                        <div class="owl-carousel carousel_se_03_carousel owl-theme offers-items">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <br>
+    
+
+<div class="container mt-5">
+
+  <ul id="itemList" class="list-group mt-3">
+    <!-- List items will be dynamically added here using JavaScript -->
+  </ul>
+  <div class="btn-container">
+    <button class="btn btn-primary" onclick="location.href='./qts.html'">Post a Quote</button>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Retrieve parameters from the URL
+  var urlParams = new URLSearchParams(window.location.search);
+  var category = urlParams.get('category');
+  var subcategory = urlParams.get('subcategory');
+  var quantity = urlParams.get('quantity');
+  var budget = urlParams.get('budget');
+  var date = urlParams.get('date');
+
+  // Create a new list item
+  var listItem = {
+    category: category,
+    subcategory: subcategory,
+    quantity: quantity,
+    budget: budget,
+    date: date
+  };
+
+  // Get the existing items from localStorage
+  var items = JSON.parse(localStorage.getItem('items')) || [];
+
+  // Add the new item to the array
+  items.push(listItem);
+
+  // Save the updated items back to localStorage
+  localStorage.setItem('items', JSON.stringify(items));
+
+  // Now, create and append list items for each item in the array
+  items.forEach(function (item, index) {
+    var listItemElement = document.createElement('li');
+    listItemElement.className = 'list-group-item d-flex justify-content-between align-items-start'; // Adjusted classes
+
+    var contentContainer = document.createElement('div');
+    contentContainer.className = 'd-flex flex-column';
+
+    var categoryElement = document.createElement('div');
+    categoryElement.textContent = 'Category: ' + item.category;
+    contentContainer.appendChild(categoryElement);
+
+    var subcategoryElement = document.createElement('div');
+    subcategoryElement.textContent = 'Subcategory: ' + item.subcategory;
+    contentContainer.appendChild(subcategoryElement);
+
+    var quantityElement = document.createElement('div');
+    quantityElement.textContent = 'Quantity: ' + item.quantity;
+    contentContainer.appendChild(quantityElement);
+
+    var budgetElement = document.createElement('div');
+    budgetElement.textContent = 'Budget: ' + item.budget;
+    contentContainer.appendChild(budgetElement);
+
+    var dateElement = document.createElement('div');
+    dateElement.textContent = 'Date: ' + item.date;
+    contentContainer.appendChild(dateElement);
+
+    listItemElement.appendChild(contentContainer);
+
+    // Create buttons and append them to the list item
+    var buttonGroup = document.createElement('div');
+    buttonGroup.className = 'btn-group';
+
+    var respondedQuotesButton = document.createElement('button');
+    respondedQuotesButton.className = 'btn btn-primary';
+    respondedQuotesButton.textContent = 'Responded Quotes';
+    buttonGroup.appendChild(respondedQuotesButton);
+
+    var viewDetailsButton = document.createElement('button');
+    viewDetailsButton.className = 'btn btn-primary ml-2'; // Added margin to the right
+    viewDetailsButton.textContent = 'View Details';
+    buttonGroup.appendChild(viewDetailsButton);
+
+    // Delete button
+    var deleteButton = document.createElement('button');
+    deleteButton.className = 'btn btn-danger ml-2';
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function () {
+      // Remove the item from the array and update local storage
+      items.splice(index, 1);
+      localStorage.setItem('items', JSON.stringify(items));
+
+      // Remove the list item from the DOM
+      listItemElement.remove();
+    });
+
+    buttonGroup.appendChild(deleteButton);
+
+    listItemElement.appendChild(buttonGroup);
+
+    // Append the new item to the list
+    document.getElementById('itemList').appendChild(listItemElement);
+  });
+
+</script>
+
+</body>
+</html>
