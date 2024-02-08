@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Responded Quotes</title>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    .section-heading {
+      color: #fff;
+    }
+
+    .section-subheading {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .list-group-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 20px;
+      transition: box-shadow 0.3s;
+    }
+
+    .list-group-item:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .date-status-container {
+      text-align: center;
+    }
+    
+
+    .button-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn {
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      color: whitesmoke;
+    }
+
+    .post-quote-btn {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #cop1 {
+        width: 100px;
+    }
+
+    #cop2{
+        width: 100px;
+    }
+  </style>
+</head>
+<body>
+    <section class="carousel_se_03 d-flex justify-content-center" style="background: rgba(244, 148, 49);">
+        <div class="container-fluid pt-5 pb-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 px-4 pt-0  ">
+                        <h2 class="section-heading">Responded Quotes</h2>
+                        <h5 class="section-subheading">Quotes which the vendor has accepted, 
+                            counter offered and are depended on your reply</h5>
+                        <div class="owl-carousel carousel_se_03_carousel owl-theme offers-items">
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <br>
+    
+
+<div class="container mt-5">
+
+  <ul class="list-group">
+    <!-- Example list items, replace with your data -->
+    <li class="list-group-item">
+      <div>
+        <strong>Looking for Product:</strong> Product 1 
+        <br> <br>
+        <p>
+          Responded by<br>
+          <strong>Name:</strong> Vendor 1<br>
+          <strong>Email:</strong> abc@gmail.com
+      </p>
+      </div>
+
+      <div class="date-status-container">
+        <strong>Date:</strong> 2024-02-05<br>
+        <strong>Status:</strong> Open
+      </div>
+      <div class="button-container">
+        <button class="btn btn-secondary" data-toggle="modal" data-target="#detailsModal1">History</button>
+        <button class="btn btn-success ml-2" data-toggle="modal" data-target="#detailsModal1">Accept</button>
+        <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#viewDetailsModal1">Counter Offer</button>
+        <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#detailsModal1 ">Reject</button>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <div>
+        <strong>Looking for Product:</strong> Product 2
+        <br> <br>
+        <p>
+          Responded by<br>
+          <strong>Name:</strong> Vendor 2<br>
+          <strong>Email:</strong> xyz@gmail.com
+      </p>
+      </div>
+      <div class="date-status-container">
+        <strong>Date:</strong> 2024-02-10<br>
+        <strong>Status:</strong> In Progress
+      </div>
+      <div class="button-container">
+        <button class="btn btn-secondary" data-toggle="modal" data-target="#detailsModal1">History</button>
+        <button class="btn btn-success ml-2" data-toggle="modal" data-target="#detailsModal1">Accept</button>
+        <button class="btn btn-primary ml-2" data-toggle="modal" data-target=" #viewDetailsModal2">Counter Offer</button>
+        <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#detailsModal1">Reject</button>
+      </div>
+    </li>
+    <!-- Add more list items as needed -->
+  </ul>
+
+  <!-- Post a Quote Button -->
+  <div class="post-quote-btn">
+    <button class="btn btn-primary">Post a Quote</button>
+  </div>
+</div>
+
+
+<!-- Modal 1 for View Details -->
+<div class="modal fade" id="viewDetailsModal1" tabindex="-1" role="dialog" aria-labelledby="viewDetailsModalLabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="viewDetailsModalLabel1"><strong>Counter Offer</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4><strong>Vendor 1</strong></h4><br>
+          <form id="formModal1" action="go.html">
+            <strong> Counter Offer Price: </strong><input type="number" min="10" id="cop1" required><br><br>
+            <textarea name="" id="" cols="50" rows="5" required>Message: </textarea>
+          </form>
+          <!-- Add more details as needed -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submitModal1">submit</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal 2 for View Details -->
+<div class="modal fade" id="viewDetailsModal2" tabindex="-1" role="dialog" aria-labelledby="viewDetailsModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="viewDetailsModalLabel2"><strong>Counter Offer</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4><strong>Vendor 2</strong></h4><br>
+          <form id="formModal2" action="go.html">
+            <strong> Counter Offer Price: </strong><input id="cop2" type="number" min="10" required><br><br>
+            <textarea name="" id="" cols="50" rows="5" required>Message: </textarea>
+          </form>
+          <!-- Add more details as needed -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="submitModal2">submit</button><!-- Redirects to quote form but input field will already be filled  -->
+           <button type="button" class="btn btn-danger" data-dismiss="modal">cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden modal for confirmation -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to submit the counter offer?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="confirmButton">Confirm</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Hidden modal for success message -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Success</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Counter offer submitted successfully!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // JavaScript code to handle form submission and validation
+    document.addEventListener("DOMContentLoaded", function() {
+      // Function to close all modals
+      function closeAllModals() {
+        $('.modal').modal('hide');
+      }
+  
+      // Handle submit button click for modal 1
+      document.getElementById("submitModal1").addEventListener("click", function() {
+        // Get the form and input values
+        var form = document.getElementById("formModal1");
+        var input = document.getElementById("cop1");
+        var textarea = form.querySelector("textarea");
+  
+        // Check if input and textarea are not empty
+        if (input.value.trim() === "" || textarea.value.trim() === "") {
+          // If empty, prevent form submission
+          event.preventDefault();
+          alert("Please fill in all fields.");
+        } else {
+          // Close all other modals
+          closeAllModals();
+          // Show confirmation modal
+          $('#confirmationModal').modal('show');
+        }
+      });
+  
+      // Handle submit button click for modal 2
+      document.getElementById("submitModal2").addEventListener("click", function() {
+        // Get the form and input values
+        var form = document.getElementById("formModal2");
+        var input = document.getElementById("cop2");
+        var textarea = form.querySelector("textarea");
+  
+        // Check if input and textarea are not empty
+        if (input.value.trim() === "" || textarea.value.trim() === "") {
+          // If empty, prevent form submission
+          event.preventDefault();
+          alert("Please fill in all fields.");
+        } else {
+          // Close all other modals
+          closeAllModals();
+          // Show confirmation modal
+          $('#confirmationModal').modal('show');
+        }
+      });
+
+      // Handle click on confirm button in confirmation modal
+      document.getElementById("confirmButton").addEventListener("click", function() {
+        // Close all other modals
+        closeAllModals();
+        // Show success modal
+        $('#successModal').modal('show');
+      });
+    });
+  </script>
+
+  
+  
+
+</body>
+</html>

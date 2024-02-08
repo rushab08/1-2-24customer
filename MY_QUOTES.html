@@ -51,8 +51,6 @@
     }
 
     .btn {
-      background-color: #007bff;
-      color: #fff;
       border: none;
       padding: 8px 15px;
       border-radius: 5px;
@@ -61,7 +59,6 @@
     }
 
     .btn:hover {
-      background-color: #0056b3;
       color: whitesmoke;
     }
 
@@ -69,13 +66,7 @@
       text-align: center;
       margin-top: 20px;
     }
-    .modal-footer .clbt {
-    background-color: red;
-    }
-    .modal-footer .clbt:hover {
-    background-color: rgb(215, 6, 6);
-    color: whitesmoke;
-    }
+
   </style>
 </head>
 <body>
@@ -104,15 +95,16 @@
     <!-- Example list items, replace with your data -->
     <li class="list-group-item">
       <div>
-        <strong>Looking for Product:</strong> Product 1
+        <strong>Looking for Product:</strong> Product 1 
       </div>
+
       <div class="date-status-container">
         <strong>Date:</strong> 2024-02-05<br>
         <strong>Status:</strong> Open
       </div>
       <div class="button-container">
-        <button class="btn" data-toggle="modal" data-target="#detailsModal1">Responded Quotes</button>
-        <button class="btn ml-2" data-toggle="modal" data-target="#viewDetailsModal1">View Details</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#detailsModal1">Responded Quotes</button>
+        <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#viewDetailsModal1">View Details</button>
       </div>
     </li>
     <li class="list-group-item">
@@ -124,8 +116,8 @@
         <strong>Status:</strong> In Progress
       </div>
       <div class="button-container">
-        <button class="btn" data-toggle="modal" data-target="#detailsModal2">Responded Quotes</button>
-        <button class="btn ml-2" data-toggle="modal" data-target="#viewDetailsModal2">View Details</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#detailsModal2">Responded Quotes</button>
+        <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#viewDetailsModal2">View Details</button>
       </div>
     </li>
     <!-- Add more list items as needed -->
@@ -159,8 +151,8 @@
         <!-- Add more details as needed -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary">Edit</button><!-- Redirects to quote form but input field will already be filled  -->
-        <button type="button" class="clbt btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Edit</button><!-- Redirects to quote form but input field will already be filled  -->
+        <button type="button" class="clbt btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -188,8 +180,8 @@
         <!-- Add more details as needed -->
       </div>
       <div class="modal-footer">
-        <button type="button" class=" btn btn-secondary">Edit</button><!-- Redirects to quote form but input field will already be filled  -->
-         <button type="button" class="clbt btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class=" btn btn-primary">Edit</button><!-- Redirects to quote form but input field will already be filled  -->
+         <button type="button" class="clbt btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
